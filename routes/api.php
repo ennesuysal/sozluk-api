@@ -40,5 +40,5 @@ Route::get('/susers/{id}/entries', 'SuserController@show_entries');
 Route::post('/susers/store', 'SuserController@store')->middleware(['auth:api', 'scope:admin']);
 Route::delete('/susers/destroy/{id}', 'SuserController@destroy')->middleware(['auth:api', 'scope:moderator,admin']);
 
-Route::post('/likes/store', 'LikeController@store');
-Route::delete('/likes/destroy/{id}', 'LikeController@destroy');
+Route::post('/likes/store', 'LikeController@store')->middleware(['auth:api', 'scope:suser,moderator,admin']);
+Route::delete('/likes/destroy/{id}', 'LikeController@destroy')->middleware(['auth:api', 'scope:suser,moderator,admin']);;

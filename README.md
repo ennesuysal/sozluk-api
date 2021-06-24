@@ -55,7 +55,8 @@ Params: email, nick, password
 Params: nick, password
 
 - GET: /entries => show all entries
-- GET /entries/{id} => show entry
+- GET: /entries/{id} => show entry
+- GET: /entries/{id}/likes => show likes of entry
 - POST /entries/store => post entry
 Params: title_id, entry
 
@@ -73,7 +74,12 @@ DELETE: /titles/destroy/{id} => delete title
 
 - GET: /susers => show all users
 - GET: /susers/{id} => show user
-- GET: /susers/{id}/entries' => show entries of user
+- GET: /susers/{id}/entries => show entries of user
 - POST: /susers/store => Register a user with a role
 Params: email, nick, password, role
-- DELETE => /susers/destroy/{id} => delete user
+- DELETE: /susers/destroy/{id} => delete user
+
+- POST: /likes/store => Like entry
+Params: entry_id, like => like might be 0 to dislike or 1 to like
+NOTE: To change like status you must request again.
+- DELETE: /likes/destroy/{id} => delete like.
