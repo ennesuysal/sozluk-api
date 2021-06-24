@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Likes;
 use App\Models\Suser;
 use App\Models\Title;
 use Illuminate\Http\Request;
@@ -70,5 +71,10 @@ class EntryController extends Controller
             return Response(['Status' => 'Success']);
         }
         return Response(['Status' => 'Forbidden!']);
+    }
+
+    public function getLikes($entry_id){
+        $likes = Likes::where('entry_id', $entry_id)->get();
+        return Response($likes);
     }
 }

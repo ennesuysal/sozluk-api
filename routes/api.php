@@ -23,6 +23,7 @@ Route::post('/login', 'API\AuthController@login')->name('login');
 
 Route::get('/entries', 'EntryController@index');
 Route::get('/entries/{id}', 'EntryController@show');
+Route::get('/entries/{id}/likes', 'EntryController@getLikes');
 Route::post('/entries/store', 'EntryController@store')->middleware(['auth:api', 'scope:suser,moderator,admin']);;
 Route::put('/entries/update/{id}', 'EntryController@update')->middleware(['auth:api', 'scope:suser,moderator,admin']);
 Route::delete('/entries/destroy/{id}', 'EntryController@destroy')->middleware(['auth:api', 'scope:suser,moderator,admin']);
@@ -38,3 +39,6 @@ Route::get('/susers/{id}', 'SuserController@show');
 Route::get('/susers/{id}/entries', 'SuserController@show_entries');
 Route::post('/susers/store', 'SuserController@store')->middleware(['auth:api', 'scope:admin']);
 Route::delete('/susers/destroy/{id}', 'SuserController@destroy')->middleware(['auth:api', 'scope:moderator,admin']);
+
+Route::post('/likes/store', 'LikeController@store');
+Route::delete('/likes/destroy/{id}', 'LikeController@destroy');
